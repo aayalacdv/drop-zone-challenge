@@ -4,7 +4,7 @@ import { DropZone } from './components/DropZone';
 import { WelcomeMessage } from './components/WelcomeMessage';
 
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className='flex flex-col items-center justify-center sm:flex-row App'>
         <DropZone/>

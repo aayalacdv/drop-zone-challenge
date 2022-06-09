@@ -15,12 +15,12 @@ export const DropZone: React.FC = () => {
 
     return (
             
-        <div className="w-full h-full flex flex-col items-center justify-center bg-red-500">
+        <div className="w-full h-full flex flex-col items-center justify-center">
             <div
                 {...getRootProps()}
                 className='relative flex items-center justify-center w-full h-1/2'>
-                <div className='absolute z-0 w-[90%] bg-green-600 h-full blur-md' />
-                <div className='z-10 flex items-center justify-center w-[88%] bg-black h-[98%] rounded-md hover:cursor-pointer'>
+                <div className='absolute z-0 w-[90%] bg-green h-full blur-md' />
+                <div className='z-10 flex items-center justify-center w-[88%] bg-purple h-[98%] rounded-md hover:cursor-pointer'>
                     <label
                         onMouseEnter={(e) => setMouseEnter((prev) => true)}
                         onMouseLeave={(e) => setMouseEnter((prev) => false)}
@@ -34,7 +34,7 @@ export const DropZone: React.FC = () => {
                 </div>
             </div>
             <div className="my-4"></div>
-            <button className='w-[88%] bg-green-600 py-2 mb-[10rem] text-white font-bold rounded-md'>Subir archivos</button>
+            <button className='w-[88%] bg-green py-2 mb-[10rem] text-white font-bold rounded-md'>Subir archivos</button>
             <div className="my-[-5rem]"></div> 
         </div>
 
