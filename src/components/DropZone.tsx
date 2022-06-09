@@ -52,6 +52,7 @@ export const DropZone: React.FC = () => {
             </div>
             <div className="my-4"></div>
             <button 
+            disabled = {!loaded}
             onClick={() => onUpload()}
             className='w-[88%] bg-green py-2 mb-[10rem] text-white font-bold rounded-md'
             >Subir archivos</button>
