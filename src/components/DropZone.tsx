@@ -43,7 +43,7 @@ export const DropZone: React.FC = () => {
                         {(loaded == false && uploaded == false) || (loaded == true && uploaded == false) ?
                             <p className="text-xl text-white text-center">ARRASTRA TUS ARCHIVOS AQUÍ</p> :
                             <p className="text-xl text-white text-center">
-                                {files.length == 0 ?
+                                {files.length == 1 ?
                                     `TU ARCHIVO ${files[0]} SE HA SUBIDO CORRECTAMENTE` :
                                     `TUS ARCHIVOS ${files.map((file) => file + ',')} SE HAN SUBIDO CORRECTAMENTE`
                                 }
