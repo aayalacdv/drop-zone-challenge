@@ -7,8 +7,8 @@ import { WelcomeMessage } from './components/WelcomeMessage';
 const App: React.FC = () => {
   return (
     <div className='flex flex-col items-center justify-center sm:flex-row App'>
-        <DropZone/>
-      <WelcomeMessage/>
+      <DropZone />
+      <WelcomeMessage />
     </div>
   );
 }
