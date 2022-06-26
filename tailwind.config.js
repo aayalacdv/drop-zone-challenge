@@ -7,6 +7,7 @@ module.exports = {
       white: 'white',
       green: '#569B51',
       purple: '#130F26', 
+      brown: '#232730',
 
     },
     screens: {

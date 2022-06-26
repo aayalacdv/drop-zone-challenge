@@ -1,11 +1,7 @@
 import React, { useState, useCallback } from "react";
 import { useDropzone } from 'react-dropzone';
+import ErrorMessage from "./ErrorMessage";
 import LogosCanvas from "./LogosCanvas";
-
-
-
-
-
 
 
 export const DropZone: React.FC = () => {
@@ -13,13 +9,35 @@ export const DropZone: React.FC = () => {
     const [files, setFiles] = useState<string[]>([]);
     const [loaded, setLoaded] = useState<boolean>(false);
     const [uploaded, setUploaded] = useState<boolean>(false);
+    const [error, setError] = useState<boolean>(false)
+
+    const analyzeFile = (name : string) => {
+        const ext = name.split('.')[1]
+        if(ext === 'txt'){
+            return true
+        } 
+
+        return false
+    } 
+
 
     const onDrop = useCallback((acceptedFiles: any) => {
         // Do something with the files
-        acceptedFiles.forEach((file: any) => setFiles((prev) => [...prev, file.path]))
+        acceptedFiles.forEach((file: any) => {
+        const forbidden = analyzeFile(file.path)
+            if(forbidden){
+                setError(true)
+                return 
+            }
+            else{
+                setFiles((prev) => [...prev, file.path])
+            }
+        })
 
-        setLoaded(true);
-        setUploaded(false);
+        if(!error){
+            setLoaded(true);
+            setUploaded(false);
+        }
 
     }, []);
 
@@ -30,6 +48,34 @@ export const DropZone: React.FC = () => {
     }
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
+
+    const toggleError = () => {
+        setError(false)
+    }
+
+
+    if( error) {
+        return (
+        <div className="w-full h-full flex flex-col items-center justify-center">
+            <div
+                className='relative flex items-center justify-center w-full h-[80%]'>
+                <div className='absolute z-0 w-[90%] bg-green h-full blur-md' />
+                <div className='z-10 flex items-center justify-center w-[88%] bg-purple h-[98%] rounded-md hover:cursor-pointer'>
+                    <LogosCanvas/>
+                    <ErrorMessage setter={toggleError}/>
+                </div>
+            </div>
+            <div className="my-4"></div>
+            <button
+                disabled={!loaded}
+                onClick={() => onUpload()}
+                className='w-[88%] bg-green py-2 mb-[10rem] text-white font-bold rounded-md'
+            >Subir archivos</button>
+            <div className="my-[-5rem]"></div>
+        </div>
+        )
+    }
+
 
     return (
 
